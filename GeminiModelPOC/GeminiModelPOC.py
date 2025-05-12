@@ -1,4 +1,10 @@
-from google import genai
-client = genai.Client(api_key="AIzaSyAXckQYbEPi8NhDk2bXpUawf3qfMX-nP-c")
-response = client.models.generate_content(model="gemini-2.0-flash", contents="Explain how AI works in a few words")
+import os
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
+
+import google.generativeai as genai
+genai.configure(api_key='AIzaSyAXckQYbEPi8NhDk2bXpUawf3qfMX-nP-c')
+model = genai.GenerativeModel('gemini-2.0-flash')
+
+response = model.generate_content("how to file a legal case in consumer court")
 print(response.text)
+
