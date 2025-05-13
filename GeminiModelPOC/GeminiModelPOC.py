@@ -1,9 +1,12 @@
 #Text Generation sample working
 import os
+from dotenv import load_dotenv
+import google.generativeai as genai
+
+load_dotenv()
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
 
-import google.generativeai as genai
-genai.configure(api_key='AIzaSyAXckQYbEPi8NhDk2bXpUawf3qfMX-nP-c')
+genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash')
 
 response = model.generate_content("how to file a legal case in consumer court")
